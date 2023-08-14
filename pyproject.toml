@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "web-hw-10"
+version = "0.1.0"
+description = ""
+authors = ["maxafanasiev <80445276+maxafanasiev@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "web_hw_10"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.4"
+psycopg2-binary = "^2.9.7"
+pillow = "^10.0.0"
+pymongo = "^4.4.1"
+requests = "^2.31.0"
+bs4 = "^0.0.1"
+lxml = "^4.9.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

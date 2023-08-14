@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quotes to Homework</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quoteapp/bootstrap.min.css' %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quoteapp/main.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="row header-box">
+        <div class="col-md-4">
+            <h1>
+                <a href="{% url 'quoteapp:main' %}" style="text-decoration: none">Quotes to Scrape</a>
+            </h1>
+        </div>
+        <div class="col-md-4">
+            {% if user.is_authenticated %}
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a class="btn nav-link px-2 link-light" href="{% url 'quoteapp:quote' %}">Add new quote</a></li>
+                <li><a class="btn nav-link px-2 link-light" href="{% url 'quoteapp:author' %}">Add new author</a></li>
+                <li><a class="btn nav-link px-2 link-light" href="{% url 'quoteapp:scrap' %}">Scrap</a></li>
+            </ul>
+            {% endif %}
+        </div>
+
+        <div class="col-md-4">
+            <p>
+                {% if user.is_authenticated %}
+                <span>
+                Welcome <b>{{ user.username }}!</b>
+            </span>
+                <a href="{% url 'users:logout' %}">
+                    <button type="button" class="btn btn-danger"> Logout</button>
+                </a>
+                {% else %}
+                <a href="{% url 'users:signup' %}">
+                    <button type="button" class="btn btn-primary">SignUp</button>
+                </a>
+                <a href="{% url 'users:login' %}">
+                    <button type="button" class="btn btn-primary"> Login</button>
+                </a>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+
+        {% block content %}
+        {% endblock %}
+
+
+        {% block top_ten_tags %}
+        {% endblock %}
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">
+            Quotes by: <a href="https://github.com/maxafanasiev">Max Afanasiev</a>
+        </p>
+        <p class="copyright">
+            Made with <span class="zyte">❤</span> by <a class="zyte"
+                                                        href="https://https://github.com/maxafanasiev">Max</a>
+        </p>
+    </div>
+</footer>
