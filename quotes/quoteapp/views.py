@@ -108,7 +108,8 @@ def scrap(request):
         form = ScrapForm(request.POST)
         if form.is_valid():
             scrapper = Scrap()
-            scrapper.run(request.POST.get("url"))
+            url = "http://quotes.toscrape.com/"
+            scrapper.run(url)
 
             return redirect(to="quoteapp:main")
         else:

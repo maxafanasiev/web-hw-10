@@ -1,14 +1,11 @@
 {% extends "quoteapp/base.html" %}
 
 {% block content %}
-<h1 class="text-light mb-3"> Scrapping URL</h1>
+<h1 class="text-light mb-3"> Scrapping "http://quotes.toscrape.com/"</h1>
 <form method="POST" action="{% url 'quoteapp:scrap' %}">
     {% csrf_token %}
     <div class="row">
         <div class="col mb-3">
-            <label class="form-label text-light">
-                <strong>URL:</strong>
-            </label>
             <div>{{ form.url }}</div>
             {% if form.errors.url %}
             <span class="text-warning"><small>{{ form.errors.url }}</small></span>
@@ -17,7 +14,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Scrape</button>
             <button type="reset" class="btn btn-secondary">Reset</button>
         </div>
     </div>

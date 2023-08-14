@@ -24,8 +24,8 @@ class AuthorForm(ModelForm):
 
 
 class ScrapForm(ModelForm):
-    url = URLField(required=True)
+    # url = URLField(required=True)
 
     class Meta:
         model = Scrap_url
-        fields = ["url"]
+        exclude = ["url"]
