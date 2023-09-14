@@ -1,4 +1,5 @@
-{% extends "quoteapp/base.html" %} {% block content %}
+{% extends "quoteapp/base.html" %}
+{% block content %}
 
 <form action="{% url 'users:signup' %}" method="post" accept-charset="utf-8">
     {% csrf_token %}
@@ -11,6 +12,17 @@
         <span class="text-warning"><small>{{ form.errors.username }}</small></span>
         {% endif %}
     </div>
+
+    <div class="row">
+        <div class="form-group col-xs-3">
+            <label class="form-label"> Email:</label>
+            <div>{{ form.email }}</div>
+        </div>
+        {% if form.errors.email %}
+        <span class="text-warning"><small>{{ form.errors.email }}</small></span>
+        {% endif %}
+    </div>
+
     <div class="row">
         <div class="form-group col-xs-3">
             <label class="form-label">Password</label>

@@ -1,7 +1,7 @@
 {% extends "quoteapp/base.html" %} {% block content %}
 
 {% if messages %}
-<div>
+<div xmlns:users="http://www.w3.org/1999/xhtml" xmlns:users="http://www.w3.org/1999/xhtml">
     {% for message in messages %}
     <div {% if message.tags %} class="alert-{{ message.tags }}" {% endif %}>{{ message }}</div>
     {% endfor %}
@@ -9,21 +9,26 @@
 {% endif %}
 
 <form action="{% url 'users:login' %}" method="post" accept-charset="utf-8">
-        {% csrf_token %}
-        <div class="row">
-            <div class="form-group col-xs-3">
-                <label class="form-label">Username</label>
-                <div>{{ form.username }}</div>
-            </div>
+    {% csrf_token %}
+    <div class="row">
+        <div class="form-group col-xs-3">
+            <label class="form-label">Username</label>
+            <div>{{ form.username }}</div>
         </div>
-        <div class="row">
-            <div class="form-group col-xs-3">
-                <label class="form-label">Password</label>
-                <div>{{ form.password }}</div>
-            </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-3">
+            <label class="form-label">Password</label>
+            <div>{{ form.password }}</div>
         </div>
-        <input type="submit" value="Login" class="btn btn-primary">
+    </div>
+    <input type="submit" value="Login" class="btn btn-primary">
+    <div class="row">
+        <div class="form-group col-xs-3">
+            <a href=" {% url "users:password_reset" %} " class="text-center"><i>Forgot Password?</i></a>
+        </div>
+    </div>
 
-    </form>
+</form>
 
 {% endblock %}
